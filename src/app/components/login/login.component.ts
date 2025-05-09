@@ -1,39 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+
+declare var bootstrap: any; // ✅ Declare Bootstrap for tooltip initialization
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  userId: string = ''; // ✅ Added userId property
+  password: string = ''; // ✅ Added password property
   pin: string = "";
   errorMsg: string = '';
+  showPassword: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  ngOnInit(): void { // ✅ Initialize Bootstrap tooltips
+    const tooltipTriggerList = Array.from(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    tooltipTriggerList.forEach(tooltipEl => new bootstrap.Tooltip(tooltipEl));
+  }
+
+  togglePasswordVisibility(): void { // ✅ Toggle password visibility
+    this.showPassword = !this.showPassword;
+  }
+
   login() {
-    this.http.post<any>('http://localhost:8080/api/admin/login', { pin: this.pin })
+    const payload = {
+      userId: this.userId,
+      password: this.password
+    };
+
+    this.http.post<any>('http://localhost:8080/api/admin/login', payload)
       .subscribe({
         next: (response) => {
-          console.log('Login response:', response);
           if (response.success) {
             localStorage.setItem('adminLoggedIn', 'true');
             alert('Login successful!');
-            // localStorage.setItem('token', response.token);
-            // localStorage.setItem('role', response.role);
-  
             this.router.navigate(['/dashboard']);
           } else {
-            this.errorMsg = response.message || 'Login failed. Please try again.';
+            this.errorMsg = response.message || 'Login failed.';
           }
         },
         error: (error) => {
-          console.error('Login error:', error);
-          this.errorMsg = error.error?.message || 'Server error. Please try again later.';
+          this.errorMsg = error.error?.message || 'Server error. Try again later.';
         }
       });
   }
-  
 }

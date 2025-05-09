@@ -13,6 +13,7 @@ import { SolarRegistrationFormComponent } from './components/solar-registration-
 import { StatusInstallationComponent } from './components/status-installation/status-installation.component';
 import { VisitQuiriesComponent } from './components/visit-quiries/visit-quiries.component';
 import { LoginComponent } from './components/login/login.component';
+import { VisitorComponent } from './components/visitor/visitor.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginComponent } from './components/login/login.component';
     SolarRegistrationFormComponent,
     StatusInstallationComponent,
     VisitQuiriesComponent,
-    LoginComponent
+    LoginComponent,
+    VisitorComponent
   ],
   imports: [
     BrowserModule,

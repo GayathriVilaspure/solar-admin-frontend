@@ -1,6 +1,6 @@
 <div class="card shadow-sm p-4">
   <h4 class="text-primary mb-4">
-    <i class="bi bi-question-circle-fill me-2"></i> Enquiry Details
+    <i class="bi bi-person-lines-fill me-2"></i> Visitor Details
   </h4>
 
   <!-- Search Input -->
@@ -20,26 +20,28 @@
       <thead class="table-primary text-center">
         <tr>
           <th>ID</th>
-          <th>Name</th>
+          <th>Consumer Name</th>
           <th>Mobile Number</th>
           <th>Address</th>
-          <th>KW</th>
+          <th>Status</th>
+          <th>Reason Not Done</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <!-- No Data -->
-        <tr *ngIf="visitor1.length === 0">
+        <tr *ngIf="visitors.length === 0">
           <td colspan="7" class="text-center">No data available</td>
         </tr>
 
         <!-- Data Rows -->
-        <tr *ngFor="let visitor of visitor1">
+        <tr *ngFor="let visitor of visitors">
           <td class="fw-semibold text-center">{{ visitor.id }}</td>
-          <td>{{ visitor.name }}</td>
-          <td>{{ visitor.number }}</td>
-          <td>{{ visitor.address }}</td>
-          <td>{{ visitor.KW }}</td>
+          <td>{{ visitor.consumerName }}</td>
+          <td>{{ visitor.consumerMobileNumber }}</td>
+          <td>{{ visitor.consumerAddress }}</td>
+          <td>{{ visitor.installationStatus }}</td>
+          <td>{{ visitor.ReasonNotDone }}</td>
           <td class="text-center">
             <button class="btn btn-sm btn-outline-primary me-2" (click)="editVisitor(visitor)">
               <i class="bi bi-pencil-square"></i>
@@ -53,5 +55,3 @@
     </table>
   </div>
 </div>
-
-

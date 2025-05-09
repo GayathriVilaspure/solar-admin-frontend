@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit {
   registrations: any[] = [];
   installations: any[] = [];
   visitQueries: any[] = [];
+  visitor: any[]  = [];
+  
 
   constructor(
     private dashboardService: DashboardService,
@@ -54,6 +56,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getRegistrations().subscribe(data => this.registrations = data);
     this.dashboardService.getInstallations().subscribe(data => this.installations = data);
     this.dashboardService.getVisitQueries().subscribe(data => this.visitQueries = data);
+    this.dashboardService.getVisitors().subscribe(data => this.visitor = data);
   }
 
   loadVisitors(): void {

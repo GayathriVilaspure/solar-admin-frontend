@@ -8,6 +8,7 @@ import { SolarRegistrationFormComponent } from './components/solar-registration-
 import { StatusInstallationComponent } from './components/status-installation/status-installation.component';
 import { VisitQuiriesComponent } from './components/visit-quiries/visit-quiries.component';
 import { AuthGuard } from './auth.guard';
+import { VisitorComponent } from './components/visitor/visitor.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,6 +22,8 @@ const routes: Routes = [
       { path: 'registrations', component: SolarRegistrationFormComponent },
       { path: 'installations', component: StatusInstallationComponent },
       { path: 'visit-queries', component: VisitQuiriesComponent },
+      { path: 'visitor', component: VisitorComponent }
+
     ]
   }
 ];

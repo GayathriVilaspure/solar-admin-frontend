@@ -9,7 +9,7 @@ import { Visitor2 } from '../model/solar-registration-form';
 })
 export class RegistrationService {
 
-  private baseUrl = 'http://localhost:8080/api/solar-registration';
+  private baseUrl = 'http://localhost:8086/api/user';
 
   constructor(private http: HttpClient) {}
 

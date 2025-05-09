@@ -28,3 +28,22 @@
   .text-danger {
     font-size: 0.9rem;
   }
+
+  /* Added styles for input group */
+  .input-group .form-control {
+    border-right: none;
+  }
+
+  .input-group .btn {
+    border-left: none;
+    border-color: #ced4da;
+  }
+
+  /* Added styles for transition effect on icons */
+  .transition-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .transition-icon:hover {
+    transform: scale(1.2);
+  }

@@ -3,14 +3,39 @@
 <div class="login-wrapper d-flex align-items-center justify-content-center min-vh-100 bg-light">
   <div class="login-box p-4 shadow rounded">
     <h2 class="text-center mb-4 text-primary">Admin Login</h2>
-    <input
-      type="text"
-      [(ngModel)]="pin"
-      class="form-control"
-      placeholder="Enter PIN"
-    />
 
-    <div class="mb-3"></div> <!-- Added space -->
+    <!-- User ID Input -->
+    <div class="mb-3">
+      <input
+        type="text"
+        [(ngModel)]="userId"
+        class="form-control"
+        placeholder="Enter User ID"
+      />
+    </div>
+
+    <!-- Password Input with Toggle -->
+    <div class="input-group mb-3 position-relative">
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        [(ngModel)]="password"
+        class="form-control"
+        placeholder="Enter Password"
+      />
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        (click)="togglePasswordVisibility()"
+        [attr.title]="showPassword ? 'Hide Password' : 'Show Password'"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+      >
+        <i
+          [ngClass]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"
+          class="transition-icon"
+        ></i>
+      </button>
+    </div>
 
     <button (click)="login()" class="btn btn-primary w-100">Login</button>
     <p *ngIf="errorMsg" class="text-danger text-center mt-3">{{ errorMsg }}</p>
