@@ -1,0 +1,48 @@
+<div class="card shadow-sm p-4">
+  <h4 class="text-primary mb-4">
+    <i class="bi bi-person-lines-fill me-2"></i> Queries Details
+  </h4>
+
+  <!-- Search Input -->
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by Name"
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-primary text-center">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Consumer Number</th>
+          <th>Consumer Email</th>
+          <th>Queries</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- No Data -->
+        <tr *ngIf="visitor4.length === 0">
+          <td colspan="7" class="text-center">No queries found</td>
+        </tr>
+
+        <!-- Data Rows -->
+        <tr *ngFor="let visitor of visitor4">
+          <td class="fw-semibold">{{ visitor.id }}</td>
+          <td>{{ visitor.consumerName }}</td>
+          <td>{{ visitor.consumerNumber }}</td>
+          <td>{{ visitor.consumerEmail }}</td>
+          <td>{{ visitor.queries}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

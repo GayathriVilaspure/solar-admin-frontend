@@ -1,0 +1,59 @@
+<div class="card shadow-sm p-4">
+  <h4 class="text-primary mb-4">
+    <i class="bi bi-question-circle-fill me-2"></i> Enquiry Details
+  </h4>
+
+  <!-- Search Input -->
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by Name"
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-primary text-center">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Mobile Number</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Enquiry</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- No Data -->
+        <tr *ngIf="visitor1.length === 0">
+          <td colspan="7" class="text-center">No data available</td>
+        </tr>
+
+        <!-- Data Rows -->
+        <tr *ngFor="let visitor of visitor1">
+          <td class="fw-semibold text-center">{{ visitor.id }}</td>
+          <td>{{ visitor.name }}</td>
+          <td>{{ visitor.number }}</td>
+          <td>{{ visitor.email }}</td>
+          <td>{{ visitor.address }}</td>
+          <td>{{ visitor.enquery }}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-outline-primary me-2" (click)="editVisitor(visitor)">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteVisitor(visitor.id!)">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

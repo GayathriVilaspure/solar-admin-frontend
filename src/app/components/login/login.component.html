@@ -1,0 +1,18 @@
+<p>login works!</p>
+
+<div class="login-wrapper d-flex align-items-center justify-content-center min-vh-100 bg-light">
+  <div class="login-box p-4 shadow rounded">
+    <h2 class="text-center mb-4 text-primary">Admin Login</h2>
+    <input
+      type="text"
+      [(ngModel)]="pin"
+      class="form-control"
+      placeholder="Enter PIN"
+    />
+
+    <div class="mb-3"></div> <!-- Added space -->
+
+    <button (click)="login()" class="btn btn-primary w-100">Login</button>
+    <p *ngIf="errorMsg" class="text-danger text-center mt-3">{{ errorMsg }}</p>
+  </div>
+</div>
